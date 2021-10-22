@@ -20,7 +20,7 @@ class ItemsListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.fragment_frag_main)
 
         /* Instantiates headerAdapter and itemsAdapter. Both adapters are added to concatAdapter.
         which displays the contents sequentially */

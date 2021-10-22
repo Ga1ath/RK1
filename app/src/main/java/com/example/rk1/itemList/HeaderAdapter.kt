@@ -3,7 +3,6 @@ package com.example.rk1.itemList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rk1.R
 
@@ -13,11 +12,9 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
     private var itemCount: Int = 0
 
     /* ViewHolder for displaying header. */
-    class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        private val itemNumberTextView: TextView = itemView.findViewById(R.id.item_number_text)
+    class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(itemCount: Int) {
-            itemNumberTextView.text = itemCount.toString()
+        fun bind() {
         }
     }
 
@@ -30,7 +27,7 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
 
     /* Binds number of items to the header. */
     override fun onBindViewHolder(holder: HeaderViewHolder, position: Int) {
-        holder.bind(itemCount)
+        holder.bind()
     }
 
     /* Returns number of items, since there is only one item in the header return one  */
