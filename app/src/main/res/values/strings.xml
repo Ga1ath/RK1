@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RK1</string>
+
+    <string name="item1_name">Bitcoin (BTC)</string>
+
+    <string name="item_finder">Crypto list</string>
+    <string name="item_string">Cryptos</string>
+    <string name="item1_description">test</string>
+</resources>
