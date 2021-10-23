@@ -1,11 +1,12 @@
 <resources>
-    <string name="app_name">RK1</string>
+    <string name="app_name" translatable="false">RK1</string>
 
-    <string name="item1_name">Bitcoin (BTC)</string>
+    <string name="item1_name" translatable="false">Bitcoin (BTC)</string>
 
     <string name="item_finder">Crypto list</string>
     <string name="item1_description">test</string>
     <string name="input_crypto_name">Enter crypto name</string>
     <string name="submit_text">Apply</string>
     <string name="settings">Settings</string>
+    <string name="language">Language</string>
 </resources>

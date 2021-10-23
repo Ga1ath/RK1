@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="item_finder">Список криптовалют</string>
+    <string name="item1_description">тест</string>
+    <string name="input_crypto_name">Введите тикет криптовалюты</string>
+    <string name="submit_text">Применить</string>
+    <string name="settings">Настройки</string>
+    <string name="language">Язык</string>
+</resources>
