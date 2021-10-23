@@ -11,7 +11,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
         val editPref = preferenceScreen.findPreference("days")
-
         editPref.onPreferenceChangeListener = object: Preference.OnPreferenceChangeListener {
             override fun onPreferenceChange(preference: Preference?, newValue: Any?): Boolean {
                 try {

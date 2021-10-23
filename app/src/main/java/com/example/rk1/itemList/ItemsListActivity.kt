@@ -2,6 +2,7 @@ package com.example.rk1.itemList
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
@@ -12,6 +13,7 @@ import com.example.rk1.R
 import com.example.rk1.data.Item
 import com.example.rk1.itemDetail.ItemDetailActivity
 import com.example.rk1.settings.Settings
+import java.util.*
 
 const val ITEM_ID = "item id"
 
@@ -53,6 +55,33 @@ class ItemsListActivity : AppCompatActivity() {
             startActivity(settings)
             // User chose the "Settings" item, show the app settings UI...
             true
+        }
+
+        R.id.action_language -> {
+            if (item.title.toString() == "Language") {
+                val locale = Locale("ru")
+                Locale.setDefault(locale)
+                val config = resources.configuration
+                config.setLocale(locale)
+
+                createConfigurationContext(config)
+
+                resources.updateConfiguration(config, resources.displayMetrics)
+                recreate()
+                true
+            } else {
+                val locale = Locale("en")
+                Locale.setDefault(locale)
+                val config = resources.configuration
+                config.setLocale(locale)
+
+                createConfigurationContext(config)
+
+                resources.updateConfiguration(config, resources.displayMetrics)
+                recreate()
+                true
+            }
+
         }
 
         else -> {

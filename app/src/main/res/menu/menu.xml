@@ -4,5 +4,10 @@
     <item android:id="@+id/action_settings"
         android:title="@string/settings"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_language"
+        android:title="@string/language"
+        app:showAsAction="never"
+        />
 
 </menu>
