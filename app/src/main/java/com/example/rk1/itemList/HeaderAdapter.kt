@@ -14,12 +14,6 @@ import com.example.rk1.data.WebApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import android.text.Editable
-
-import android.text.TextWatcher
-
-
-
 
 
 /* A list always displaying one element: the number of items. */
