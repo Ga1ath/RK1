@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RK1" >
+        <activity
+            android:name="com.example.rk1.settings.Settings"
+            android:exported="true" />
         <activity android:name="com.example.rk1.itemList.ItemsListActivity"
             android:exported="true">
             <intent-filter>

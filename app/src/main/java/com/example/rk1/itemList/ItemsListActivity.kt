@@ -2,6 +2,8 @@ package com.example.rk1.itemList
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ConcatAdapter
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.rk1.R
 import com.example.rk1.data.Item
 import com.example.rk1.itemDetail.ItemDetailActivity
+import com.example.rk1.settings.Settings
 
 const val ITEM_ID = "item id"
 
@@ -37,6 +40,26 @@ class ItemsListActivity : AppCompatActivity() {
                 headerAdapter.updateItemCount(it.size)
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_settings -> {
+            val settings = Intent(this, Settings::class.java)
+            startActivity(settings)
+            // User chose the "Settings" item, show the app settings UI...
+            true
+        }
+
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
     }
 
     /* Opens ItemDetailActivity when RecyclerView item is clicked. */

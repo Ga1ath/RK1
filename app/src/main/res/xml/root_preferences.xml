@@ -1,0 +1,24 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="Converter Settings">
+
+        <EditTextPreference
+            app:key="days"
+            app:title="Days"
+            app:summary="How many days do you want to get info about"
+            android:inputType="number"
+            android:maxLength="3"/>
+
+        <ListPreference
+            app:defaultValue="USD"
+            app:entries="@array/curr_entries"
+            app:entryValues="@array/curr_values"
+            app:key="choose"
+            app:title="Currency"
+            app:summary="Which cryptocurrency do you chose" />
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

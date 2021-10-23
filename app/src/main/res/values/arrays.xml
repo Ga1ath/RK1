@@ -1,0 +1,15 @@
+<resources>
+
+    <string-array name="curr_entries">
+        <item>RUB</item>
+        <item>USD</item>
+        <item>EUR</item>
+        <item>LTC</item>
+    </string-array>
+
+    <string-array name="curr_values">
+        <item>RUB</item>
+        <item>USD</item>
+        <item>EUR</item>
+    </string-array>
+</resources>
