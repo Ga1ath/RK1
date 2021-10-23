@@ -1,7 +1,6 @@
 package com.example.rk1.settings
 
 import android.os.Bundle
-import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.example.rk1.R
