@@ -5,10 +5,9 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 private const val base_url = "https://min-api.cryptocompare.com/data/v2/"
-
-const val optional_part_of_url = "histoday?fsym=BTC&tsym=USD&limit=10"
 
 val moshi: Moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -20,8 +19,12 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface WebApiService {
-    @GET(optional_part_of_url)
-    suspend fun getData(): CryptoDates
+    @GET("histoday")
+    suspend fun getData(
+        @Query("fsym") coin: String,
+        @Query("tsym") cur: String,
+        @Query("limit") limit: String,
+    ): CryptoDates
 }
 
 object WebApi {

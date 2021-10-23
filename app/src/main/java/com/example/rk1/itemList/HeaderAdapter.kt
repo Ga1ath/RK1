@@ -1,17 +1,25 @@
 package com.example.rk1.itemList
 
+import android.content.SharedPreferences
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rk1.R
 import com.example.rk1.data.WebApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.lang.Exception
+import android.text.Editable
+
+import android.text.TextWatcher
+
+
+
 
 
 /* A list always displaying one element: the number of items. */
@@ -31,14 +39,14 @@ class HeaderAdapter(private val itemsListViewModel: ItemsListViewModel) : Recycl
 
         view.findViewById<Button>(R.id.button_submit).setOnClickListener {
 
-            CoroutineScope(Dispatchers.IO).launch {
-                /*
-                 * For @Query: You need to replace the following line with val response = service.getEmployees(2)
-                 * For @Path: You need to replace the following line with val response = service.getEmployee(53)
-                 */
+            val prefs : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(parent.context)
+            val currency : String = prefs.getString("choose", "").toString()
+            val num : Int = prefs.getString("days", "10")?.toInt() ?: 10
+            val cryptoCurrency = view.findViewById<EditText>(R.id.input_crypto).text.toString()
 
+            CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    val response = WebApi.retrofitService.getData()
+                    val response = WebApi.retrofitService.getData(cryptoCurrency, currency, num.toString())
                     val data = response.data.data
 
                     Log.d("LENGTH: ", data.size.toString())
@@ -46,10 +54,10 @@ class HeaderAdapter(private val itemsListViewModel: ItemsListViewModel) : Recycl
                     for (element in data) {
                         itemsListViewModel.insertItem(
                             element.time.toLong(),
-                            "BTC: " + java.time.format.DateTimeFormatter.ISO_INSTANT.format(java.time.Instant.ofEpochSecond(
+                            "$cryptoCurrency: " + java.time.format.DateTimeFormatter.ISO_INSTANT.format(java.time.Instant.ofEpochSecond(
                                 element.time.toLong()
                             )),
-                            "average cost: " + (element.low + element.high) / 2
+                            "low cost: " + element.low + "; high cost: " + element.high
                         )
                         Log.d("ITERATION: ", itemsListViewModel.itemsLiveData.value?.size.toString())
                     }
@@ -65,6 +73,8 @@ class HeaderAdapter(private val itemsListViewModel: ItemsListViewModel) : Recycl
     /* Binds number of items to the header. */
     override fun onBindViewHolder(holder: HeaderViewHolder, position: Int) {
         holder.bind()
+
+
     }
 
     /* Returns number of items, since there is only one item in the header return one  */

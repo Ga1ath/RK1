@@ -22,6 +22,7 @@ class ItemDetailActivity : AppCompatActivity() {
 
         /* Connect variables to UI elements. */
         val itemName: TextView = findViewById(R.id.item_detail_name)
+        val itemDescription: TextView = findViewById(R.id.item_detail_description)
 
         val bundle: Bundle? = intent.extras
         if (bundle != null) {
@@ -33,6 +34,7 @@ class ItemDetailActivity : AppCompatActivity() {
         currentItemId?.let {
             val currentItem = itemDetailViewModel.getItemForId(it)
             itemName.text = currentItem?.name
+            itemDescription.text = currentItem?.description
         }
 
     }

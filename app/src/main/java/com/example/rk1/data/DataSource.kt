@@ -3,7 +3,6 @@ package com.example.rk1.data
 import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.rk1.R
 
 
 /* Handles operations on itemsLiveData and holds details about it. */
