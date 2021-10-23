@@ -6,9 +6,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
-private const val base_url = "https://min-api.cryptocompare.com/data/v2/histoday?"
+private const val base_url = "https://min-api.cryptocompare.com/data/v2/"
 
-const val optional_part_of_url = "fsym=BTC&tsym=USD&limit=10"
+const val optional_part_of_url = "histoday?fsym=BTC&tsym=USD&limit=10"
 
 val moshi: Moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -21,7 +21,7 @@ private val retrofit = Retrofit.Builder()
 
 interface WebApiService {
     @GET(optional_part_of_url)
-    suspend fun getData(): CryptoDates
+    suspend fun getData(): List<CryptoDates>
 }
 
 object WebApi {

@@ -59,25 +59,6 @@ class ItemsListActivity : AppCompatActivity() {
                 headerAdapter.updateItemCount(it.size)
             }
         })
-
-        findViewById<Button>(R.id.button_submit).setOnClickListener {
-
-            CoroutineScope(Dispatchers.IO).launch {
-                /*
-                 * For @Query: You need to replace the following line with val response = service.getEmployees(2)
-                 * For @Path: You need to replace the following line with val response = service.getEmployee(53)
-                 */
-
-                try {
-                    val response = WebApi.retrofitService.getData()
-                    Log.d("Status: ", response.response)
-
-
-                } catch (e: Exception) {
-                    e.message?.let { it1 -> Log.e("RETROFIT_ERROR: ", it1) }
-                }
-            }
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

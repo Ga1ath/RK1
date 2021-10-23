@@ -1,10 +1,17 @@
 package com.example.rk1.itemList
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rk1.R
+import com.example.rk1.data.WebApi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.lang.Exception
 
 
 /* A list always displaying one element: the number of items. */
@@ -22,6 +29,26 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeaderViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.header_item, parent, false)
+
+        view.findViewById<Button>(R.id.button_submit).setOnClickListener {
+
+            CoroutineScope(Dispatchers.IO).launch {
+                /*
+                 * For @Query: You need to replace the following line with val response = service.getEmployees(2)
+                 * For @Path: You need to replace the following line with val response = service.getEmployee(53)
+                 */
+
+                try {
+                    val response = WebApi.retrofitService.getData()
+                    Log.d("Status: ", response[0].response)
+
+
+                } catch (e: Exception) {
+                    e.message?.let { it1 -> Log.e("RETROFIT_ERROR: ", it1) }
+                }
+            }
+        }
+
         return HeaderViewHolder(view)
     }
 
