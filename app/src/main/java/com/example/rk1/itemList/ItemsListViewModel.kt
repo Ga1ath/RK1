@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.rk1.data.DataSource
 import com.example.rk1.data.Item
-import kotlin.random.Random
 
 
 class ItemsListViewModel(val dataSource: DataSource) : ViewModel() {
@@ -13,13 +12,13 @@ class ItemsListViewModel(val dataSource: DataSource) : ViewModel() {
     val itemsLiveData = dataSource.getItemList()
 
     /* If the name and description are present, create new Item and add it to the datasource */
-    fun insertItem(itemName: String?, itemDescription: String?) {
+    fun insertItem(itemId: Long, itemName: String?, itemDescription: String?) {
         if (itemName == null || itemDescription == null) {
             return
         }
 
         val newItem = Item(
-            Random.nextLong(),
+            itemId,
             itemName,
             itemDescription
         )

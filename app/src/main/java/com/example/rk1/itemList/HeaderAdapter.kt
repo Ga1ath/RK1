@@ -44,11 +44,14 @@ class HeaderAdapter(private val itemsListViewModel: ItemsListViewModel) : Recycl
                     Log.d("LENGTH: ", data.size.toString())
 
                     for (element in data) {
-                        Log.d("ITERATION: ", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
                         itemsListViewModel.insertItem(
+                            element.time.toLong(),
                             "BTC: " + java.time.format.DateTimeFormatter.ISO_INSTANT.format(java.time.Instant.ofEpochSecond(
-                                element.time.toLong())),
-                            "average cost: " + (element.low + element.high) / 2)
+                                element.time.toLong()
+                            )),
+                            "average cost: " + (element.low + element.high) / 2
+                        )
+                        Log.d("ITERATION: ", itemsListViewModel.itemsLiveData.value?.size.toString())
                     }
                 } catch (e: Exception) {
                     e.message?.let { it1 -> Log.e("RETROFIT_ERROR: ", it1) }

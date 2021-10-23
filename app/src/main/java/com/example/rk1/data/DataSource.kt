@@ -30,7 +30,7 @@ class DataSource(resources: Resources) {
             itemsLiveData.postValue(listOf(item))
         } else {
             val updatedList = currentList.toMutableList()
-            updatedList.add(0, item)
+            updatedList.add(item)
             itemsLiveData.postValue(updatedList)
         }
     }
