@@ -7,5 +7,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class CryptoDates (
     @Json(name = "Response") val response: String,
-    @Json(name = "Data")     val data: List<CryptoData>
+    @Json(name = "Data")     val data: CryptoData
 )

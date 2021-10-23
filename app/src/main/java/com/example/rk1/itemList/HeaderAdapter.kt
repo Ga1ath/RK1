@@ -40,7 +40,7 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
 
                 try {
                     val response = WebApi.retrofitService.getData()
-                    Log.d("Status: ", response[0].response)
+                    Log.d("Status: ", response.response)
 
 
                 } catch (e: Exception) {

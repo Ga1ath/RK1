@@ -21,7 +21,7 @@ private val retrofit = Retrofit.Builder()
 
 interface WebApiService {
     @GET(optional_part_of_url)
-    suspend fun getData(): List<CryptoDates>
+    suspend fun getData(): CryptoDates
 }
 
 object WebApi {
