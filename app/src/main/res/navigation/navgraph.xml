@@ -4,9 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navgraph"
     app:startDestination="@id/fragMain">
+
     <fragment
         android:id="@+id/fragMain"
-        android:label="fragment_frag_main"
         tools:layout="@layout/fragment_frag_main" >
+        <action
+            android:id="@+id/action_fragMain_to_frag1"
+            app:destination="@id/frag1" />
     </fragment>
+    <fragment
+        android:id="@+id/frag1"
+        android:name="com.example.rk1.itemDetail.ItemDetailActivity"
+        tools:layout="@layout/item_detail_activity" />
 </navigation>
