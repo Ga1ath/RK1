@@ -8,9 +8,7 @@ import com.example.rk1.R
 fun itemList(resources: Resources): List<Item> {
     return listOf(
         Item(
-            id = 1,
-            name = resources.getString(R.string.item1_name),
-            description = resources.getString(R.string.item1_description)
+            0, "Chronological list of crypto", "Contains lowest and highest values per day"
         )
     )
 }

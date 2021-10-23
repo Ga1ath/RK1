@@ -15,12 +15,11 @@ import java.lang.Exception
 
 
 /* A list always displaying one element: the number of items. */
-class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
+class HeaderAdapter(private val itemsListViewModel: ItemsListViewModel) : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
     private var itemCount: Int = 0
 
     /* ViewHolder for displaying header. */
     class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
         fun bind() {
         }
     }
@@ -40,9 +39,17 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
 
                 try {
                     val response = WebApi.retrofitService.getData()
-                    Log.d("Status: ", response.response)
+                    val data = response.data.data
 
+                    Log.d("LENGTH: ", data.size.toString())
 
+                    for (element in data) {
+                        Log.d("ITERATION: ", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+                        itemsListViewModel.insertItem(
+                            "BTC: " + java.time.format.DateTimeFormatter.ISO_INSTANT.format(java.time.Instant.ofEpochSecond(
+                                element.time.toLong())),
+                            "average cost: " + (element.low + element.high) / 2)
+                    }
                 } catch (e: Exception) {
                     e.message?.let { it1 -> Log.e("RETROFIT_ERROR: ", it1) }
                 }
