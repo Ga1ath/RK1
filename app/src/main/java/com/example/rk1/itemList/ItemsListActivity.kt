@@ -1,18 +1,35 @@
 package com.example.rk1.itemList
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rk1.R
+import com.example.rk1.data.CryptoDates
 import com.example.rk1.data.Item
+import com.example.rk1.data.WebApi
+import com.example.rk1.data.moshi
 import com.example.rk1.itemDetail.ItemDetailActivity
 import com.example.rk1.settings.Settings
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.GET
+import java.lang.Exception
 import java.util.*
 
 const val ITEM_ID = "item id"
@@ -42,6 +59,25 @@ class ItemsListActivity : AppCompatActivity() {
                 headerAdapter.updateItemCount(it.size)
             }
         })
+
+        findViewById<Button>(R.id.button_submit).setOnClickListener {
+
+            CoroutineScope(Dispatchers.IO).launch {
+                /*
+                 * For @Query: You need to replace the following line with val response = service.getEmployees(2)
+                 * For @Path: You need to replace the following line with val response = service.getEmployee(53)
+                 */
+
+                try {
+                    val response = WebApi.retrofitService.getData()
+                    Log.d("Status: ", response.response)
+
+
+                } catch (e: Exception) {
+                    e.message?.let { it1 -> Log.e("RETROFIT_ERROR: ", it1) }
+                }
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
